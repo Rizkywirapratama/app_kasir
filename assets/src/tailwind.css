@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Project base overrides */
+@layer base {
+	html,
+	body {
+		font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+	}
+	a {
+		text-decoration: none;
+	}
+}
+
+/* Small set of helper utilities to bridge existing styles */
+@layer components {
+	.ndc-card {
+		@apply bg-white rounded-xl border border-slate-200 shadow-sm;
+	}
+}
