@@ -11,7 +11,7 @@ $initial     = strtoupper(substr($user_name, 0, 1));
         <a href="<?= base_url('dashboard') ?>" class="app-brand-link mr-2">
             <img src="<?= base_url('assets/images/logo-ndc.png') ?>" alt="Nol Derajat Coffee" class="h-15 w-auto object-contain">
         </a>
-        <button class="inline-flex items-center text-white xl:hidden ml-auto bg-white/10 rounded-md px-2 py-1" id="mobileMenuClose">
+        <button type="button" class="inline-flex items-center text-white xl:hidden ml-auto bg-white/10 rounded-md px-2 py-1" id="mobileMenuClose">
             <i class="fas fa-times"></i>
         </button>
     </div>
@@ -132,7 +132,7 @@ $initial     = strtoupper(substr($user_name, 0, 1));
     <!-- Topbar Navbar -->
     <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-transparent px-4 py-3 flex items-center justify-between" id="layout-navbar">
         <div class="flex items-center gap-2">
-            <button class="inline-flex items-center mr-1 xl:hidden text-slate-400" id="mobileMenuToggle">
+            <button class="inline-flex items-center mr-1 xl:hidden text-slate-400" id="mobileMenuToggle" aria-label="Buka menu">
                 <i class="fas fa-bars fs-5"></i>
             </button>
             <div>
