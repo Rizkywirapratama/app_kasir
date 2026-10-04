@@ -26,14 +26,17 @@
 
         <!-- Kategori Pills -->
         <div class="pos-category-container">
-            <button class="pos-category-btn active" onclick="filterCategory('All', this)">
+            <button type="button" class="pos-category-btn active" data-kategori="All" onclick="filterCategory('All', this)">
                 <i class="fas fa-grid-2"></i> Semua Menu
             </button>
             <?php
-            $cats = array_unique(array_column($menu, 'nama_kategori'));
-            foreach($cats as $cat): ?>
-                <button class="pos-category-btn" onclick="filterCategory('<?= htmlspecialchars($cat) ?>', this)">
-                    <?= htmlspecialchars($cat) ?>
+            $cats = [];
+            foreach ($menu as $menu_item) {
+                $cats[$menu_item->id_kategori] = $menu_item->nama_kategori;
+            }
+            foreach($cats as $category_id => $category_name): ?>
+                <button type="button" class="pos-category-btn" data-kategori="<?= (int)$category_id ?>" onclick="filterCategory(this.dataset.kategori, this)">
+                    <?= htmlspecialchars($category_name) ?>
                 </button>
             <?php endforeach; ?>
         </div>
@@ -45,7 +48,7 @@
               <div class="pos-product-card menu-item <?= $is_out ? 'out-of-stock' : '' ?> shadow-sm hover:shadow-md"
                  data-id="<?= $m->id_menu ?>"
                  data-nama="<?= strtolower($m->nama_menu) ?>"
-                 data-kategori="<?= htmlspecialchars($m->nama_kategori) ?>"
+                 data-kategori="<?= (int)$m->id_kategori ?>"
                  data-harga="<?= $m->harga ?>"
                  data-stok="<?= $m->stok ?>"
                  onclick="addToCart(<?= $m->id_menu ?>, '<?= addslashes($m->nama_menu) ?>', <?= $m->harga ?>, <?= $m->stok ?>)">
@@ -637,6 +640,13 @@
     </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modalElement = document.getElementById('modalTambahMember');
+    document.body.appendChild(modalElement);
+});
+</script>
+
 <!-- ===== STYLES ===== -->
 <style>
 .pos-shell {
@@ -798,6 +808,9 @@
     position: relative;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     user-select: none;
+}
+#menuList > .pos-product-card[hidden] {
+    display: none !important;
 }
 .pos-product-card:hover {
     transform: translateY(-3px);
@@ -2628,15 +2641,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ═══ PRODUCT SEARCH & CATEGORY FILTER ═══ */
+let activeMenuCategory = 'All';
+
+function applyMenuFilters() {
+    const searchInput = document.getElementById('searchMenu');
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+    document.querySelectorAll('#menuList .menu-item').forEach(item => {
+        const categoryMatches = activeMenuCategory === 'All'
+            || item.dataset.kategori === String(activeMenuCategory);
+        const searchMatches = item.dataset.nama.includes(query)
+            || item.dataset.id === query;
+        item.hidden = !(categoryMatches && searchMatches);
+    });
+}
+
 function filterMenu() {
-    const q = document.getElementById('searchMenu').value.toLowerCase().trim();
+    const searchInput = document.getElementById('searchMenu');
+    const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
     const clearBtn = document.getElementById('btnClearSearch');
     if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
-
-    document.querySelectorAll('.menu-item').forEach(el => {
-        const match = el.dataset.nama.includes(q) || el.dataset.id === q;
-        el.style.display = match ? '' : 'none';
-    });
+    applyMenuFilters();
 }
 
 function clearSearch() {
@@ -2654,12 +2679,10 @@ function focusMenuCatalog() {
 }
 
 function filterCategory(cat, btn) {
+    activeMenuCategory = cat;
     document.querySelectorAll('.pos-category-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.menu-item').forEach(el => {
-        const catMatch = (cat === 'All' || el.dataset.kategori === cat);
-        el.style.display = catMatch ? '' : 'none';
-    });
+    if (btn) btn.classList.add('active');
+    applyMenuFilters();
 }
 
 /* ═══ CART MANAGEMENT ═══ */

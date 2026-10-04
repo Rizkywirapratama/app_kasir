@@ -6,6 +6,8 @@ class Menu_model extends CI_Model {
         $this->db->select('tbl_menu.*, tbl_kategori.nama_kategori');
         $this->db->from('tbl_menu');
         $this->db->join('tbl_kategori', 'tbl_menu.id_kategori = tbl_kategori.id_kategori', 'left');
+        $this->db->order_by('tbl_kategori.nama_kategori', 'ASC');
+        $this->db->order_by('tbl_menu.nama_menu', 'ASC');
         return $this->db->get()->result();
     }
 

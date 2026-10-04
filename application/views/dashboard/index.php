@@ -58,7 +58,7 @@
             <div class="card-body flex items-center justify-between gap-3">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Total Produk</div>
-                    <div class="text-2xl font-extrabold text-slate-100" id="cnt-menu">0</div>
+                    <div class="text-2xl font-extrabold text-slate-900" id="cnt-menu">0</div>
                 </div>
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(99,102,241,0.12);">
                     <i class="fas fa-mug-hot text-indigo-400 text-xl"></i>
@@ -72,7 +72,7 @@
             <div class="card-body flex items-center justify-between gap-3">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Transaksi Hari Ini</div>
-                    <div class="text-2xl font-extrabold text-slate-100" id="cnt-jual">0</div>
+                    <div class="text-2xl font-extrabold text-slate-900" id="cnt-jual">0</div>
                 </div>
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.12);">
                     <i class="fas fa-receipt text-emerald-400 text-xl"></i>
@@ -86,7 +86,7 @@
             <div class="card-body flex items-center justify-between gap-3">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Pendapatan Hari Ini</div>
-                    <div class="text-lg font-extrabold text-slate-100 whitespace-nowrap" id="cnt-pendapatan">Rp 0</div>
+                    <div class="text-lg font-extrabold text-slate-900 whitespace-nowrap" id="cnt-pendapatan">Rp 0</div>
                 </div>
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(6,182,212,0.12);">
                     <i class="fas fa-wallet text-cyan-400 text-xl"></i>
@@ -100,7 +100,7 @@
             <div class="card-body flex items-center justify-between gap-3">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Meja Tersedia</div>
-                    <div class="text-2xl font-extrabold text-slate-100"><?= $meja_tersedia ?><span class="text-base text-slate-400 font-medium"> / <?= $total_meja ?></span></div>
+                    <div class="text-2xl font-extrabold text-slate-900"><?= $meja_tersedia ?><span class="text-base text-slate-500 font-medium"> / <?= $total_meja ?></span></div>
                 </div>
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(245,158,11,0.12);">
                     <i class="fas fa-chair text-amber-400 text-xl"></i>
@@ -136,7 +136,7 @@
                     <div>
                         <div class="bg-white/2 border border-white/5 rounded-lg p-4">
                             <div style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; margin-bottom: 0.3rem;">Kasir Bertugas</div>
-                            <div style="font-weight: 800; color:#f1f5f9; font-size: 0.9375rem;"><?= htmlspecialchars($shift_aktif->nama_kasir) ?></div>
+                            <div style="font-weight: 800; color:#1e293b; font-size: 0.9375rem;"><?= htmlspecialchars($shift_aktif->nama_kasir) ?></div>
                             <div style="font-size: 0.75rem; color: #6366f1; margin-top: 0.25rem; font-weight: 600;">
                                 <i class="fas fa-clock me-1"></i>Mulai <?= date('H:i', strtotime($shift_aktif->waktu_buka)) ?> WIB
                             </div>

@@ -99,6 +99,11 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modalElement = document.getElementById('modalTambah');
+    document.body.appendChild(modalElement);
+});
+
 function searchMemberTable() {
     let input = document.getElementById("memberSearch").value.toLowerCase();
     let rows = document.querySelectorAll("#memberTable tbody tr");
@@ -125,4 +130,3 @@ function confirmDeleteMember(id) {
     });
 }
 </script>
-

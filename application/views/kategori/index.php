@@ -71,7 +71,9 @@
 <script>
 let formModal;
 document.addEventListener('DOMContentLoaded', function() {
-    formModal = new bootstrap.Modal(document.getElementById('formModal'));
+    const modalElement = document.getElementById('formModal');
+    document.body.appendChild(modalElement);
+    formModal = new bootstrap.Modal(modalElement);
 });
 function openModal() {
     document.getElementById('modalTitle').innerText = 'Tambah Kategori Baru';
@@ -102,4 +104,3 @@ function confirmDeleteKategori(id) {
     });
 }
 </script>
-
