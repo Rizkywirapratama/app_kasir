@@ -18,7 +18,7 @@
     <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- NexaPOS Custom Theme -->
-    <link href="<?= base_url('assets/css/nexapos.css?v=3.2') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/nexapos.css?v=3.3') ?>" rel="stylesheet">
     <!-- Tailwind compiled utilities (built via npm) -->
     <link href="<?= base_url('assets/css/tailwind.css?v=1.0') ?>" rel="stylesheet">
 </head>

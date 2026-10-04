@@ -91,7 +91,7 @@
                                 <?php endif; ?>
                             </td>
                             <td class="px-4 py-3 text-right">
-                                <a href="<?= base_url('penjualan/detail/'.$p->id_penjualan) ?>" class="inline-flex items-center px-3 py-1 border rounded bg-white/5 text-indigo-600 font-semibold" title="Lihat Detail Invoice">
+                                <a href="<?= base_url('penjualan/detail/'.$p->id_penjualan) ?>" class="inline-flex items-center px-3 py-1 border rounded bg-white/5 text-indigo-600 font-semibold" title="Lihat detail transaksi">
                                     <i class="fas fa-receipt mr-1"></i> Detail
                                 </a>
                             </td>
@@ -114,4 +114,3 @@ function searchSalesTable() {
     });
 }
 </script>
-
